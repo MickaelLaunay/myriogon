@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block css %}
+	<link rel="stylesheet" href="{% static 'css/style_inscription.css' %}" />
+{% endblock %}
+
+{% block js %}<script type="text/javascript" src="{% static 'js/main.js' %}"></script>{% endblock %}
+
+{% block title %}Le Myriogon{% endblock %}
+{% block content %}Bienvenue sur le Myriogon{% endblock %}
+
+{% block header-button %}<div id ="espace-perso">{% trans "Espace perso" %}</div>{% endblock %}
+
+{% block main %}
+<div id="accueilb">
+	<div id="cadre-inscription">
+	<h1 style="color:black;">Inscription</h1>
+			{% if error %}
+				<p>Utilisateur inconnu ou mauvais de mot de passe.</p>
+			{% endif %}
+			{% if user.is_authenticated %}
+				Vous êtes connecté, {{ user.username }} !
+				<a href="/deconnexion">Se déconnecter</a>
+			{% else %}
+				<form method="post" action="creationuser">
+				    {% csrf_token %}
+				    {{ form_ins.as_p }}
+				    <input type="submit" value="S'inscrire" />
+				</form>
+				<p>Autres :</p>
+				<a href="/profil/inscription"><div class="bouton-inscription"><img src="{% static 'img/img-connexion-google-i.png' %}" class="img-bt-connexion" alt="" />Connexion Google</div></a>
+				<a href="/profil/inscription"><div class="bouton-inscription"><img src="{% static 'img/img-connexion-facebook-i.png' %}" class="img-bt-connexion" alt="" />Connexion Facebook</div></a>
+			{% endif %}
+	</div>
+</div>
+{% endblock %}
+
+
+

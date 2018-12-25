@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block css %}
+	<link rel="stylesheet" href="{% static 'css/style_index.css' %}" />
+{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% endblock %}
+
+{% block title %}Le Myriogon{% endblock %}
+{% block content %}Bienvenue sur le Myriogon{% endblock %}
+
+{% block main %}
+<div id="accueilc">	
+			<div id="espaceperso">
+				<h2 class="titre-accueil">Tableau de bord</h2>
+				<p>Bonjour {{ user.username }} ! Voici un résumé des dernière nouvelles de votre espace personnel.</p>
+				<h3>Derniers messages</h3>
+				<h3>Vos cours validés</h3>
+				<h3>Achievements</h3>
+			</div>
+			<div id="cencours">
+				<h2 class="titre-accueil">Vos cours</h2>
+				{% for cour in encours %}
+					<a href="menu/{{cour.id}}-{{cour.slug}}">
+						<div class="courscourt">
+							<img src="{{ cour.icone.url }}" class="imagecourt" alt="" />
+							<div class="titrecourt">{{ cour.titre }}</div>
+						</div>
+					</a>
+				{% empty %}
+					<p>Aucun cours.</p>
+				{% endfor %}
+			</div>
+			
+</div>
+			
+			<div id="s_cours"><center>{% trans "Envie de commencer un nouveau cours ? Quelques suggestions personalisées :" %}</center></div>
+			<div id="p_cours">
+				<div class="fleche_menu"><img id="fg" src="{% static 'img/fleche_menu_g.png' %}"></img></div>
+				<div id="scroll_cours">
+					<div id="barre_cours">
+					{% for cour in conseils %}
+					<a href="menu/{{cour.id}}-{{cour.slug}}">
+					    <div class="bullecours" style="background-image: url({{ cour.icone.url }})">
+					    	<div class="titre"><h3>{{ cour.titre }}</h3></div>
+					    </div>
+					</a>
+					{% empty %}
+					    <p>Aucun cours.</p>
+					{% endfor %}
+					</div>
+				</div>
+				<div class="fleche_menu"><img id="fd" src="{% static 'img/fleche_menu_d.png' %}"></img></div>
+				<div id="lien_cours">
+					<a href="tous"><div id="boutton_cours">{% trans "Voir tous les cours." %}</div></a>
+				</div>
+			</div>
+{% endblock %}
+
+
+

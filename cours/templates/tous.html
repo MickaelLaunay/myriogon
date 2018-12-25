@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/style_index.css' %}" />{% endblock %}
+
+{% block js %}<script type="text/javascript" src="{% static 'js/main.js' %}"></script>{% endblock %}
+
+{% block title %}Le Myriogon{% endblock %}
+{% block content %}Bienvenue sur le Myriogon{% endblock %}
+
+{% block main %}
+	{% for cour in cours %}
+	<a href="menu/{{cour.id}}-{{cour.slug}}">
+	    <div class="bullecours" style="background-image: url({{ cour.icone.url }})">
+	    	<div class="titre"><h3>{{ cour.titre }}</h3></div>
+	    </div>
+	</a>
+	{% empty %}
+	    <p>Aucun cours.</p>
+	{% endfor %}
+{% endblock %}
+
+
+

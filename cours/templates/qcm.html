@@ -1,0 +1,24 @@
+{% extends "base_module.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block css %}{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static qcm %}"></script>
+<script type="text/javascript" src="{% static 'js/qcm/qcm.js' %}"></script>
+{% endblock %}
+
+{% block title %}{{ module.titre }}{% endblock %}
+{% block content %}Retrouvez le cours "{{ module.titre }}" sur le Myriagon{% endblock %}
+
+{% block main-acti %}
+	<div id="questions"></div>
+	<div id="reponses"></div>
+{% endblock %}
+
+{% block controle-acti %}
+	<div id="valider">Valider</div>
+{% endblock %}
+
+

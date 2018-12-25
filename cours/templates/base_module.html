@@ -1,0 +1,28 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans" rel="stylesheet">
+	        <link rel="stylesheet" href="{% static 'css/style_global_module.css' %}" />
+		{% block css %}{% endblock %}
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		<script type="text/javascript" src="{% static 'js/calibre_module.js' %}"></script>
+		{% block js %}{% endblock %}
+		<title>{% block title %}Le Myriogon{% endblock %}</title>
+		<meta name="description" content="{% block content %}Le Myriogon{% endblock %}">
+		<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+	</head>
+
+	<body>
+		<div id="logo-module"><a href="/"><img src="{% static 'img/logo-module.png' %}" alt=""/></a></div>
+		<div id="header-module"></div>
+		<div id="main-acti">{% block main-acti %}{% endblock %}</div>
+		<div id="controle-acti">{% block controle-acti %}{% endblock %}</div>
+		<div id="footer-module"></div>
+	</body>
+
+
+</html>

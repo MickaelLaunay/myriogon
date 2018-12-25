@@ -1,0 +1,20 @@
+{% extends "base_module.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block css %}{% endblock %}
+
+{% block js %}<script type="text/javascript" src="{% static 'js/main.js' %}"></script>{% endblock %}
+
+{% block title %}{{ cours.titre }}{% endblock %}
+{% block content %}Retrouvez le cours "{{ cours.titre }}" sur le Myriagon{% endblock %}
+
+{% block main-acti %}
+		<div id="video">
+			<h2>{{ module.titre }}</h2>
+			<center>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/{{video.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</center>
+		</div>
+{% endblock %}
+

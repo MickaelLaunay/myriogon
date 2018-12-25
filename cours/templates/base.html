@@ -1,0 +1,69 @@
+{% load i18n %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<link href="https://fonts.googleapis.com/css?family=Ubuntu|Open+Sans" rel="stylesheet">
+	        <link rel="stylesheet" href="{% static 'css/style_global.css' %}" />
+		{% block css %}{% endblock %}
+		<link rel="icon" href="{% static 'img/favicon.ico' %}" />
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+		{% block js %}{% endblock %}
+		<title>{% block title %}Le Myriogon{% endblock %}</title>
+		<meta name="description" content="{% block content %}Le Myriogon{% endblock %}">
+		<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+	</head>
+
+	<body>
+		<div id="header" style="background-image: url({% static 'img/6.png' %})">
+			<div id="speedbar">
+				<input id="rechercher" type="text" placeholder="{% trans "Rechercher" %}">
+				{% if user.is_authenticated %}
+					<div id ="espace-perso">{% trans "Espace perso" %}</div>
+				{% else %}
+					<div id ="connexion-button">{% trans "Connexion" %}</div>				
+				{% endif %}
+			</div>
+			<a href="/">
+				<img src="{% static 'img/logo.png' %}" alt="Myriogon" style="height: 80px; margin:0px; padding: 0px;"/>
+			</a>
+		</div>
+		
+		<div id="main">
+			{% block main %}{% endblock %}
+		</div>
+		
+		<div id="connexion-form">
+		<div id="cadre-connexion">
+			<img src="{% static 'img/croix.png' %}" id="connexion-close" alt="X" />
+			<h1>Connexion</h1>
+			{% if error %}
+				<p>Utilisateur inconnu ou mauvais de mot de passe.</p>
+			{% endif %}
+			{% if user.is_authenticated %}
+				Vous êtes connecté, {{ user.username }} !
+				<a href="/deconnexion">Se déconnecter</a>
+			{% else %}
+				<form method="post" action="">
+				    {% csrf_token %}
+				    {{ form.as_p }}
+				    <input type="submit" value="Se connecter" />
+				</form>
+				<h1 class="bas">Pas encore de compte ?</h1>
+					<a href="/profil/inscription"><div class="bouton-inscription"><img src="{% static 'img/img-connexion-my.png' %}" class="img-bt-connexion" alt="" />Créer un compte</div></a>
+					<a href="/profil/inscription"><div class="bouton-inscription"><img src="{% static 'img/img-connexion-google.png' %}" class="img-bt-connexion" alt="" />Connexion Google</div></a>
+					<a href="/profil/inscription"><div class="bouton-inscription"><img src="{% static 'img/img-connexion-facebook.png' %}" class="img-bt-connexion" alt="" />Connexion Facebook</div></a>
+				<div class="clear"></div>
+			{% endif %}
+		</div>
+		</div>
+
+		<div id="footer">Mentions légales - Nous contacter</div>
+
+
+	</body>
+
+
+</html>

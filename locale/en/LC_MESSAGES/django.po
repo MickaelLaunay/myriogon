@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-11 23:06+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: cours/templates/accueil.html:3 cours/templates/base.html:21
+msgid "Connexion"
+msgstr "Connexion"
+
+#: cours/templates/accueil.html:6
+msgid "Vous êtes connecté, c'est cool"
+msgstr "You're connected ;)"
+
+#: cours/templates/accueil.html:7 cours/templates/index.html:16
+msgid "Explorez les mathématiques et les sciences grâce à de nombreux cours."
+msgstr "Explore mathematics and science trough our many courses."
+
+#: cours/templates/accueil.html:8 cours/templates/index.html:17
+msgid "Choisissez vos découvertes à travers différents parcours."
+msgstr "Choose your discoveries through differents paths"
+
+#: cours/templates/accueil.html:11 cours/templates/index.html:23
+msgid "Commencez dès maintenant en choisissant un cours :"
+msgstr "Start now by choosing a course :"
+
+#: cours/templates/base.html:21
+msgid "Rechercher"
+msgstr "Search"
+
+#: cours/templates/index.html:15
+msgid "Bienvenue sur le Myriogon !"
+msgstr "Welcome to the Myriogon !"
+
+#: cours/templates/index.html:41
+msgid "Voir tous les cours."
+msgstr "See all courses"
+
+#: myriogon/settings.py:122
+msgid "Français"
+msgstr "French"
+
+#: myriogon/settings.py:123
+msgid "Anglais"
+msgstr "English"
+
+#~ msgid "Aucun cours."
+#~ msgstr "No course"

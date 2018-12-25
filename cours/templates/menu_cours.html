@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/style_menu_cours.css' %}" />{% endblock %}
+
+{% block js %}
+	<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/changeprofil.js' %}"></script>
+{% endblock %}
+
+{% block title %}{{ cours.titre }}{% endblock %}
+{% block content %}Retrouvez le cours "{{ cours.titre }}" sur le Myriagon{% endblock %}
+
+{% block main %}
+		<div id="info-cours">
+			<img src="{{ cours.icone.url }}" id="logo-cours" alt="" />
+			<div id="cours-resume">
+				<h2 id="cours-titre">{{ cours.titre }}
+				{% if user.is_authenticated %}
+				&nbsp; <span id="flashfav"><span id="bgfav"></span><img src="{{ isfav.0 }}" change="{{ isfav.1 }}" class="favcours" coursid={{ cours.id }} alt="" /></span>
+				{% endif %}
+				</h2>
+				<p>{{ cours.resume }}</p>
+			</div>
+			<div id="prerequis">
+				<h3>Prérequis</h3>
+				{% for coursp in prerequis %}
+				<a href="/menu/{{coursp.id}}-{{coursp.slug}}">				
+				<div class="bulle-prerequis"> <img src="{{ coursp.icone.url }}" class="logo-prerequis" alt="" /> <h2 class="titre-prerequis">{{ coursp.titre }}</h2> </div>
+				</a>
+				{% empty %}
+				<p>Ce cours de niveau 0 peut être abordé sans prérequis.</p>
+				{% endfor %}
+			</div>
+			<div id="prerequis">
+				<h3>Thèmes</h3>
+				<p>#nombres #pair #impair #palindrome</p>
+			</div>			
+		</div>
+
+		<progress value="62" max="100" id="progress-cours"></progress> 
+
+		<div id="chemin_cours">
+			{% for ligne in modules %}
+				<div class="ligne_module"><div class="block-module">
+					{% for module in ligne %}
+					<a href="/{{module.0.content_type}}/{{module.0.id}}-{{module.0.slug}}">
+						<div class="bullemodule" style="background-image: url({{ module.1 }})">
+							<div class="titre"><h3>{{ module.0.titre }}</h3></div>
+						</div>
+					</a>
+				{% empty %}
+				<p>Niveau vide.</p>
+				{% endfor %}
+				</div></div>
+			{% empty %}
+			    <p>Aucun module.</p>
+			{% endfor %}
+		</div>
+{% endblock %}
+

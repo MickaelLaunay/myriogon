@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/style_index.css' %}" />{% endblock %}
+
+{% block js %}<script type="text/javascript" src="{% static 'js/main.js' %}"></script>{% endblock %}
+
+{% block title %}Le Myriogon{% endblock %}
+{% block content %}Bienvenue sur le Myriogon{% endblock %}
+
+{% block main %}
+<div id="accueil">
+			<p style="float:right; margin: 15px; width: 400px; margin-top:15px; font-size:1.5em; line-height:34px;">
+				{% trans "Bienvenue sur le Myriogon !" %}<br/>
+				{% trans "Explorez les mathématiques et les sciences grâce à de nombreux cours." %}<br />
+				{% trans "Choisissez vos découvertes à travers différents parcours." %}
+			</p>
+			<iframe width="448" height="252" src="https://www.youtube.com/embed/f13ZaZrfIUc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+			</div>
+			
+			<div id="s_cours"><center>{% trans "Commencez dès maintenant en choisissant un cours :" %}</center></div>
+			<div id="p_cours">
+				<div class="fleche_menu"><img id="fg" src="{% static 'img/fleche_menu_g.png' %}"></img></div>
+				<div id="scroll_cours">
+					<div id="barre_cours">
+					{% for cour in cours %}
+					<a href="menu/{{cour.id}}-{{cour.slug}}">
+					    <div class="bullecours" style="background-image: url({{ cour.icone.url }})">
+					    	<div class="titre"><h3>{{ cour.titre }}</h3></div>
+					    </div>
+					</a>
+					{% empty %}
+					    <p>Aucun cours.</p>
+					{% endfor %}
+					</div>
+				</div>
+				<div class="fleche_menu"><img id="fd" src="{% static 'img/fleche_menu_d.png' %}"></img></div>
+				<div id="lien_cours">
+					<a href="tous"><div id="boutton_cours">{% trans "Voir tous les cours" %}</div></a>
+				</div>
+			</div>
+{% endblock %}
+
+
+
